@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import HomePage from "./Pages/HomePage/HomePage";
 import FallBack from "./Pages/FallBack/FallBack";
+import MenuCard from "./Components/MenuCard/MenuCard";
+import Header from "./Components/Header/Header";
+
+import './App.css';
+import Market from "./Pages/Market/Market";
+import ErrorBoundary from "./Components/ErrorBoundary/ErrorBoundary";
+import { CurrencyProvider } from "./Contexts/CurrencyContext";
 
 const ROUTES = createRoutesFromElements(
   <Route>
-    <Route path="/" element={<HomePage/>} />
+    <Route path="/" element={<Market/>} />
     <Route path='*' element={<FallBack />} />
   </Route>
 );
@@ -28,16 +34,12 @@ function App() {
     };
   
     // applying the primary and secondary theme colors
-    const darkTheme = createTheme({
-      palette: {
-        mode: 'light',
-        primary: {
-          main: '#90caf9',
+    const [toggleDark, settoggleDark] = useState(false);
+    const myTheme = createTheme({
+        // Theme settings
+        palette: {
+            type: toggleDark ? "dark" : "light",
         },
-        secondary: {
-          main: '#131052',
-        },
-      },
     });
 
   React.useEffect(() => {
@@ -48,10 +50,19 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <RouterProvider router={ROUTER} />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <CurrencyProvider>
+        <CssBaseline />
+        <div className='app' >
+          <MenuCard />
+          <div className='rhs'>
+            <Header />
+            <RouterProvider router={ROUTER} />
+          </div>
+        </div>
+      </CurrencyProvider>
+    </ErrorBoundary>
+
   );
 }
 
