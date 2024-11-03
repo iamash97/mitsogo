@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CircularProgress, Grid2 } from '@mui/material';
 import Trends from '../../Components/Trends/Trends';
-import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
 import CryptoOverview from '../../Components/Crypto/Crypto';
-import './styles.css'; 
 import AllTokensHeader from '../../Components/AllTokensHeader/AllTokensHeader';
 import { TRENDS } from '../../utils/constants';
-
-
+import AllTokensHeader from '../../Components/AllTokensHeader/AllTokensHeader';
+import { TRENDS } from '../../utils/constants';
+import './styles.css'; 
 
 function Market() {
   return (
