@@ -17,6 +17,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { CURRENCIES_SUPPORTED, useCurrency } from '../../Contexts/CurrencyContext';
 import { grey } from '../../utils/constants';
+import PopperHelper from '../PopperHelper/PopperHelper';
 
 const NavigationBar = ({heading}) => {
   const { loading, currentCurrency, setCurrentCurrency } = useCurrency();
@@ -38,7 +39,7 @@ const NavigationBar = ({heading}) => {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', color: 'black' }}>
         <Typography variant="h5" color="textPrimary">
           {heading}
         </Typography>
@@ -66,9 +67,7 @@ const NavigationBar = ({heading}) => {
           <IconButton >
             <ExitToAppIcon onClick={handleClick} />
           </IconButton>
-          <Popper id={id} open={open} anchorEl={anchorEl}>
-            <StyledPopperDiv>This feature is currently under development. We're working hard to bring it to you soon!</StyledPopperDiv>
-          </Popper>
+          <PopperHelper id={id} open={open} anchorEl={anchorEl} />
         </div>
       </Toolbar>
     </AppBar>
