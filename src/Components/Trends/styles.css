@@ -1,6 +1,4 @@
-.market {
+.trends {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 1rem 0;
 }
