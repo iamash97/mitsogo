@@ -1,7 +1,9 @@
-import React from 'react';
-import { Grid2 } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { CircularProgress, Grid2 } from '@mui/material';
 import Trends from '../../Components/Trends/Trends';
 import CryptoOverview from '../../Components/Crypto/Crypto';
+import AllTokensHeader from '../../Components/AllTokensHeader/AllTokensHeader';
+import { TRENDS } from '../../utils/constants';
 import AllTokensHeader from '../../Components/AllTokensHeader/AllTokensHeader';
 import { TRENDS } from '../../utils/constants';
 import './styles.css'; 
