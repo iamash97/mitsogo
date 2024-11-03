@@ -5,6 +5,7 @@ const CurrencyContext = createContext();
 export const CURRENCIES_SUPPORTED = [
     { language: 'en', currency: 'USD', symbol: '$' },
     { language: 'en', currency: 'EUR', symbol: '€' },
+    { language: 'de', currency: 'EUR', symbol: '€' },
     { language: 'en', currency: 'INR', symbol: '₹' },
     { language: 'en', currency: 'CAD', symbol: '$' }
   ];
