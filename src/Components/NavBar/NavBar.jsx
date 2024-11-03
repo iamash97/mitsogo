@@ -35,7 +35,7 @@ const NavigationBar = ({heading}) => {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', color: 'black' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant="h5" color="textPrimary">
           {heading}
         </Typography>

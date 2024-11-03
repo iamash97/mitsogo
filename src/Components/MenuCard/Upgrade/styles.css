@@ -1,0 +1,50 @@
+.upgrade {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: left;
+    width: 90%;
+    margin: 1rem auto;
+    background: white;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  }
+  
+  .user-photo {
+    width: 100px; /* Set a width for the photo */
+    height: 100px; /* Set a height for the photo */
+    border-radius: 50%; /* Make the photo circular */
+    object-fit: cover; /* Crop the image to fit */
+    border: 2px solid white;
+  }
+  
+  .user-name {
+    margin: 10px 0;
+    font-size: 1.5em;
+  }
+  
+  .verified-status {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+  }
+  
+  .verified-symbol {
+    margin-left: 5px; /* Space between text and symbol */
+  }
+
+  .balance {
+    display: flex;
+    flex-direction: column;
+
+    .balance-pl {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+  }
+  
