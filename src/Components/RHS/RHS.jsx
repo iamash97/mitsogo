@@ -1,9 +1,9 @@
 import React from 'react';
-import './styles.css'; 
 import { Grid2 } from '@mui/material';
 import NavigationBar from '../NavBar/NavBar';
 import SignupCard from '../SignupCard/SignupCard';
-import Trends from './Trends/Trends';
+import Trends from '../Trends/Trends';
+import './styles.css'; 
 
 const RHS = () => {
   return (

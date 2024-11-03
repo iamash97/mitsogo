@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardContent, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
@@ -9,20 +9,21 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const items = [
-  { id: 1, text: 'Markets', icon: <SignalCellularAltIcon /> },
-  { id: 2, text: 'Watchlist', icon: <RemoveRedEyeOutlinedIcon /> },
-  { id: 3, text: 'AI Trasing Bots', icon: <SmartToyOutlinedIcon /> },
-  { id: 4, text: 'Wallet', icon: <AccountBalanceWalletOutlinedIcon /> },
-  { id: 5, text: 'Guides', icon: <LocalOfferOutlinedIcon /> },
-  { id: 6, text: 'Community', icon: <PeopleAltOutlinedIcon /> },
-  { id: 7, text: 'Support', icon: <FavoriteBorderOutlinedIcon /> },
+  { id: 1, text: 'Markets', icon: <SignalCellularAltIcon />, route: '/markets' },
+  { id: 2, text: 'Watchlist', icon: <RemoveRedEyeOutlinedIcon />, route: '/watchlist'  },
+  { id: 3, text: 'AI Trasing Bots', icon: <SmartToyOutlinedIcon />, route: '/bots'  },
+  { id: 4, text: 'Wallet', icon: <AccountBalanceWalletOutlinedIcon />, route: '/wallet'  },
+  { id: 5, text: 'Guides', icon: <LocalOfferOutlinedIcon />, route: '/guides'  },
+  { id: 6, text: 'Community', icon: <PeopleAltOutlinedIcon />, route: '/community'  },
+  { id: 7, text: 'Support', icon: <FavoriteBorderOutlinedIcon />, route: '/support'  },
 ];
 
 export default function Menu() {
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(1);
 
-  const handleSelect = (id) => {
-    setSelectedId(id);
+  const handleSelect = (item) => {
+    setSelectedId(item.id);
+    window.location.href = item.route;
   };
 
   return (
@@ -30,7 +31,7 @@ export default function Menu() {
       {items.map((item) => (
         <ListItem
           key={item.id}
-          onClick={() => handleSelect(item.id)}
+          onClick={() => handleSelect(item)}
           sx={{
             cursor: 'pointer',
             backgroundColor: selectedId === item.id ? 'blue' : 'transparent',

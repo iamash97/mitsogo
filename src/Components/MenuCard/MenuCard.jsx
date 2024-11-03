@@ -3,8 +3,8 @@ import Card from '@mui/material/Card';
 import AppDetails from './AppDetails/AppDetails';
 import UserProfile from './UserProfile/UserProfile';
 import Menu from './Menu/Menu';
-import './styles.css';
 import Upgrade from './Upgrade/Upgrade';
+import './styles.css';
 
 
 export default function MenuCard() {
@@ -17,9 +17,11 @@ export default function MenuCard() {
 
   return (
     <Card sx={{ width: 1/5, minHeight: '90%', m: 1, boxShadow: 4, borderRadius: '1rem' }} className='menu-card'>
-      <AppDetails />
-      <UserProfile user={user} />
-      <Menu />
+      <div>
+        <AppDetails />
+        <UserProfile user={user} />
+        <Menu />
+      </div>
       <Upgrade />
     </Card>
   );

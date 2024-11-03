@@ -3,11 +3,10 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const CurrencyContext = createContext();
 
 export const CURRENCIES_SUPPORTED = [
-    { language: 'en', currency: 'USD', symbol: '$' },
-    { language: 'en', currency: 'EUR', symbol: '€' },
-    { language: 'de', currency: 'EUR', symbol: '€' },
-    { language: 'en', currency: 'INR', symbol: '₹' },
-    { language: 'en', currency: 'CAD', symbol: '$' }
+    { language: 'en', currency: 'USD', symbol: '$', locale: 'en-US' },
+    { language: 'en', currency: 'EUR', symbol: '€', locale: 'en-DE'  },
+    { language: 'en', currency: 'INR', symbol: '₹', locale: 'en-IN'  },
+    { language: 'en', currency: 'CAD', symbol: '$', locale: 'en-CA'  }
   ];
 
 export const CurrencyProvider = ({ children }) => {

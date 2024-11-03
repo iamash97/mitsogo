@@ -1,78 +1,97 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   AppBar,
   Toolbar,
   Typography,
   IconButton,
-  Menu,
   MenuItem,
-  FormControl,
   Select,
   Switch,
+  Popper,
+  styled,
+  css,
 } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { CURRENCIES_SUPPORTED, useCurrency } from '../../Contexts/CurrencyContext';
+import { grey } from '../../utils/constants';
 
-const NavigationBar = () => {
-  const { currentCurrency, setCurrentCurrency } = useCurrency();
-  const [darkMode, setDarkMode] = useState(false);
+const NavigationBar = ({heading}) => {
+  const { loading, currentCurrency, setCurrentCurrency } = useCurrency();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
 
   const handleCurrencyChange = (event) => {
-    setCurrentCurrency({...currentCurrency, language: event.target.value.language, currency: event.target.value.currency, symbol: event.target.value.symbol });
+    setCurrentCurrency({...currentCurrency, language: event.target.value.language, currency: event.target.value.currency, symbol: event.target.value.symbol, locale: event.target.value.locale });
   };
-    
-  // Implement dark mode functionality here
-  const handleDarkModeToggle = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+
+  if(loading) {
+    return <></>
+  }
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant="h5" color="textPrimary">
-          Markets
+          {heading}
         </Typography>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <IconButton>
-            <SearchOutlinedIcon color="primary" />
+            <SearchOutlinedIcon onClick={handleClick} />
           </IconButton>
           <IconButton>
-            <MailOutlineIcon color="primary" />
+            <MailOutlineIcon onClick={handleClick} />
           </IconButton>
           <IconButton>
-            <NotificationsNoneIcon color="primary" />
+            <NotificationsNoneIcon onClick={handleClick} />
           </IconButton>
-          <FormControl variant="outlined" sx={{ minWidth: 80, margin: '0 10px' }}>
-            <Select
-              value={currentCurrency.currency}
-              onChange={handleCurrencyChange}
-              displayEmpty
-              inputProps={{ 'aria-label': 'Without label' }}
+          <Select
+            defaultValue={`${currentCurrency.language}/${currentCurrency.currency}`}
+            onChange={handleCurrencyChange}
+            inputProps={{ 'aria-label': 'Without label' }}
               sx={{
-                '& .MuiSelect-select': {
-                  padding: '10px 14px', // Adjust padding for better appearance
-                  '&:focus': {
-                    backgroundColor: 'transparent', // Remove background on focus
-                  },
-                },
+                minWidth: 100, margin: '0 10px'
               }}
-            >
-              {
-                CURRENCIES_SUPPORTED.map((currency) => <MenuItem value={currency}>{`${currency.language}/${currency.currency}`}</MenuItem>)
-              }
-            </Select>
-          </FormControl>
-          <Switch checked={darkMode} onChange={handleDarkModeToggle} />
-          <IconButton color="primary">
-            <ExitToAppIcon />
+          >
+            { CURRENCIES_SUPPORTED.map((currency) => <MenuItem key={currency.language} value={currency}>{`${currency.language}/${currency.currency}`}</MenuItem>) }
+          </Select>
+          <Switch onChange={handleClick} />
+          <IconButton >
+            <ExitToAppIcon onClick={handleClick} />
           </IconButton>
+          <Popper id={id} open={open} anchorEl={anchorEl}>
+            <StyledPopperDiv>This feature is currently under development. We're working hard to bring it to you soon!</StyledPopperDiv>
+          </Popper>
         </div>
       </Toolbar>
     </AppBar>
   );
 };
+
+const StyledPopperDiv = styled('div')(
+  ({ theme }) => css`
+    background-color: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border-radius: 8px;
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+    box-shadow: ${theme.palette.mode === 'dark'
+      ? `0px 4px 8px rgb(0 0 0 / 0.7)`
+      : `0px 4px 8px rgb(0 0 0 / 0.1)`};
+    padding: 0.75rem;
+    color: ${theme.palette.mode === 'dark' ? grey[100] : grey[700]};
+    font-size: 0.875rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    opacity: 1;
+    margin: 0.25rem 0;
+  `,
+);
+
 
 export default NavigationBar;
