@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead ,TableRow } from
 import Token from './Token';
 import Numbers from './Numbers';
 
-export default function TrendTable({trends}) {
+export default function TrendTable({trends, unit}) {
   return (
     <TableContainer>
       <Table aria-label="simple table" sx={{
@@ -29,7 +29,7 @@ export default function TrendTable({trends}) {
                 <Token trend={trend} />
               </TableCell>
               <TableCell align="right">
-                <Numbers trend={trend} />
+                <Numbers trend={trend} unit={unit} />
               </TableCell>
             </TableRow>
           ))}

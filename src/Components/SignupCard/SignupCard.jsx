@@ -15,7 +15,7 @@ const SignupCard = () => {
         display: 'flex',
         borderRadius: '1rem',
         background: 'linear-gradient(to right, #cef7fd, #b5d8f8, #d6f5f8, #7ac5ff, #d6f5f8, #6bbcfe, #6bbcfe)', // Gradient with different shades of blue
-        width: '100%', // Full width of the container
+        width: '100%',
       }}
     >
       <CardContent sx={{ flex: 1 }}>
@@ -43,6 +43,7 @@ const SignupCard = () => {
             alignItems: 'center',
             width: '12rem',
           }}
+          onClick={() => { window.location.href = '/fallback' }}
         >
           Sign Up Now
           <LaunchOutlinedIcon sx={{ marginLeft: '0.5rem' }} />

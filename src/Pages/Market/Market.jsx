@@ -1,9 +1,9 @@
 import React from 'react';
-import './styles.css'; 
 import { Grid2 } from '@mui/material';
 import Trends from '../../Components/Trends/Trends';
 import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
 import CryptoOverview from '../../Components/Crypto/Crypto';
+import './styles.css'; 
 
 const TRENDS = [
   {
@@ -11,6 +11,7 @@ const TRENDS = [
     logo: <PeopleAltRoundedIcon />,
     column1: 'TOKENS',
     column2: 'INTERACTIONS',
+    unit: 'Number',
     tokens: [
       {
         tokenName: 'Kava',
@@ -54,6 +55,7 @@ const TRENDS = [
     logo: <PeopleAltRoundedIcon />,
     column1: 'EXCHANGE',
     column2: 'VOLUME',
+    unit: 'Currency',
     tokens: [
       {
         tokenName: 'Binance',
@@ -92,6 +94,7 @@ const TRENDS = [
     logo: <PeopleAltRoundedIcon />,
     column1: 'TOKEN',
     column2: 'TOTAL GAIN',
+    unit: 'Currency',
     tokens: [
       {
         tokenName: 'ADAUP',
@@ -135,6 +138,7 @@ const TRENDS = [
     logo: <PeopleAltRoundedIcon />,
     column1: 'TOKEN',
     column2: 'TOTAL LOSS',
+    unit: 'Currency',
     tokens: [
       {
         tokenName: 'ARPA Chain',
@@ -182,7 +186,7 @@ const TRENDS = [
             <Grid2 size={{ xs: 12, md: 12 }} sx={{display: 'flex'}}>
               { TRENDS && TRENDS.map((trend) => <Trends trends={trend} /> )}
             </Grid2>
-            <Grid2 size={{ xs: 12, md: 12 }} sx={{height: '1000px'}}>
+            <Grid2 size={{ xs: 12, md: 12 }} >
               <CryptoOverview />
             </Grid2>
         </Grid2>

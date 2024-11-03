@@ -9,7 +9,6 @@ import {
 import TrendTable from './TrendTable.jsx';
 
 const Trends = ({ trends }) => {
-  console.log(trends);
   return (
     <div className='trends'>
       <Card
@@ -38,7 +37,7 @@ const Trends = ({ trends }) => {
             </Avatar>
             <Typography variant="h6">{trends.trendName}</Typography>
           </Box>
-          <TrendTable trends={trends} />
+          <TrendTable trends={trends} unit={trends.unit} />
         </CardContent>
       </Card>
     </div>
